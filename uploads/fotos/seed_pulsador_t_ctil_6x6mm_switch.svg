@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <rect width="320" height="200" fill="#16181c"/>
+  <defs>
+    <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#242830" stroke-width="0.6"/>
+    </pattern>
+  </defs>
+  <rect width="320" height="200" fill="url(#grid)"/>
+
+  <!-- Encabezado técnico -->
+  <text x="12" y="18" fill="#e6edf3" font-size="10.5" font-weight="600" font-family="Segoe UI, sans-serif">Pulsador Táctil 6x6mm / Switch</text>
+  <rect x="242" y="7" width="68" height="16" rx="3" fill="#262b33" stroke="#58a6ff" stroke-width="0.8"/>
+  <text x="276" y="18" text-anchor="middle" fill="#79c0ff" font-size="8.5" font-weight="600" font-family="Segoe UI, sans-serif">Escala 1</text>
+
+  <!-- Líneas guía de cota -->
+  <line x1="74.0" y1="144.0" x2="74.0" y2="156.0" stroke="#58a6ff" stroke-width="0.7" stroke-dasharray="2,2"/>
+  <line x1="182.0" y1="144.0" x2="182.0" y2="156.0" stroke="#58a6ff" stroke-width="0.7" stroke-dasharray="2,2"/>
+
+  <!-- Componente escalado -->
+  <rect x="74.0" y="34.0" width="108.0" height="108.0" rx="3" fill="#1c2d24" stroke="#3fb950" stroke-width="1.5"/><rect x="105.3" y="65.3" width="45.4" height="45.4" rx="1.5" fill="#161b22" stroke="#8b949e" stroke-width="1"/><circle cx="79.0" cy="39.0" r="1.8" fill="#e5c07b"/><circle cx="177.0" cy="39.0" r="1.8" fill="#e5c07b"/><circle cx="79.0" cy="137.0" r="1.8" fill="#e5c07b"/><circle cx="177.0" cy="137.0" r="1.8" fill="#e5c07b"/>
+
+  <!-- Regla vertical (mm) -->
+  <line x1="40.0" y1="26" x2="40.0" y2="142.0" stroke="#d0d0d0" stroke-width="1.2"/>
+  <line x1="32.0" y1="142.0" x2="40.0" y2="142.0" stroke="#d0d0d0" stroke-width="1.1"/><line x1="36.0" y1="124.0" x2="40.0" y2="124.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="106.0" x2="40.0" y2="106.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="88.0" x2="40.0" y2="88.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="70.0" x2="40.0" y2="70.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="32.0" y1="52.0" x2="40.0" y2="52.0" stroke="#d0d0d0" stroke-width="1.1"/><text x="29.0" y="55.0" text-anchor="end" fill="#a8b3c2" font-size="8" font-family="Consolas, monospace">5</text><line x1="36.0" y1="34.0" x2="40.0" y2="34.0" stroke="#d0d0d0" stroke-width="0.7"/>
+
+  <!-- Regla horizontal (mm / cm) -->
+  <rect x="70.0" y="156.0" width="234.0" height="28" fill="#1e2229" opacity="0.9"/>
+  <line x1="74.0" y1="156.0" x2="304" y2="156.0" stroke="#d0d0d0" stroke-width="1.2"/>
+  <line x1="74.0" y1="156.0" x2="74.0" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="74.0" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">0</text><line x1="92.0" y1="156.0" x2="92.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="110.0" y1="156.0" x2="110.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="128.0" y1="156.0" x2="128.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="146.0" y1="156.0" x2="146.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="164.0" y1="156.0" x2="164.0" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="164.0" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">5</text><line x1="182.0" y1="156.0" x2="182.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="200.0" y1="156.0" x2="200.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="218.0" y1="156.0" x2="218.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="236.0" y1="156.0" x2="236.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="254.0" y1="156.0" x2="254.0" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="254.0" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">1cm</text><line x1="272.0" y1="156.0" x2="272.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/>
+
+  <!-- Etiqueta de dimensiones -->
+  <text x="308" y="194" text-anchor="end" fill="#7ee787" font-size="9.5" font-weight="600" font-family="Consolas, monospace">Dim: 6 x 6 x 5 mm (escala c/ regla mm)</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <rect width="320" height="200" fill="#16181c"/>
+  <defs>
+    <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#242830" stroke-width="0.6"/>
+    </pattern>
+  </defs>
+  <rect width="320" height="200" fill="url(#grid)"/>
+
+  <!-- Encabezado técnico -->
+  <text x="12" y="18" fill="#e6edf3" font-size="10.5" font-weight="600" font-family="Segoe UI, sans-serif">TMC2209 / A4988 / BTS7960</text>
+  <rect x="242" y="7" width="68" height="16" rx="3" fill="#262b33" stroke="#58a6ff" stroke-width="0.8"/>
+  <text x="276" y="18" text-anchor="middle" fill="#79c0ff" font-size="8.5" font-weight="600" font-family="Segoe UI, sans-serif">Escala 3</text>
+
+  <!-- Líneas guía de cota -->
+  <line x1="74.0" y1="144.0" x2="74.0" y2="156.0" stroke="#58a6ff" stroke-width="0.7" stroke-dasharray="2,2"/>
+  <line x1="155.0" y1="144.0" x2="155.0" y2="156.0" stroke="#58a6ff" stroke-width="0.7" stroke-dasharray="2,2"/>
+
+  <!-- Componente escalado -->
+  <rect x="74.0" y="34.0" width="81.0" height="108.0" rx="3" fill="#1c2d24" stroke="#3fb950" stroke-width="1.5"/><rect x="97.5" y="71.0" width="34.0" height="34.0" rx="1.5" fill="#161b22" stroke="#8b949e" stroke-width="1"/><circle cx="79.0" cy="39.0" r="1.8" fill="#e5c07b"/><circle cx="150.0" cy="39.0" r="1.8" fill="#e5c07b"/><circle cx="79.0" cy="137.0" r="1.8" fill="#e5c07b"/><circle cx="150.0" cy="137.0" r="1.8" fill="#e5c07b"/>
+
+  <!-- Regla vertical (mm) -->
+  <line x1="40.0" y1="26" x2="40.0" y2="142.0" stroke="#d0d0d0" stroke-width="1.2"/>
+  <line x1="32.0" y1="142.0" x2="40.0" y2="142.0" stroke="#d0d0d0" stroke-width="1.1"/><line x1="36.0" y1="131.2" x2="40.0" y2="131.2" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="120.4" x2="40.0" y2="120.4" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="109.6" x2="40.0" y2="109.6" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="98.8" x2="40.0" y2="98.8" stroke="#d0d0d0" stroke-width="0.7"/><line x1="32.0" y1="88.0" x2="40.0" y2="88.0" stroke="#d0d0d0" stroke-width="1.1"/><text x="29.0" y="91.0" text-anchor="end" fill="#a8b3c2" font-size="8" font-family="Consolas, monospace">10</text><line x1="36.0" y1="77.2" x2="40.0" y2="77.2" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="66.4" x2="40.0" y2="66.4" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="55.6" x2="40.0" y2="55.6" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="44.8" x2="40.0" y2="44.8" stroke="#d0d0d0" stroke-width="0.7"/><line x1="32.0" y1="34.0" x2="40.0" y2="34.0" stroke="#d0d0d0" stroke-width="1.1"/><text x="29.0" y="37.0" text-anchor="end" fill="#a8b3c2" font-size="8" font-family="Consolas, monospace">20</text>
+
+  <!-- Regla horizontal (mm / cm) -->
+  <rect x="70.0" y="156.0" width="234.0" height="28" fill="#1e2229" opacity="0.9"/>
+  <line x1="74.0" y1="156.0" x2="304" y2="156.0" stroke="#d0d0d0" stroke-width="1.2"/>
+  <line x1="74.0" y1="156.0" x2="74.0" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="74.0" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">0</text><line x1="84.8" y1="156.0" x2="84.8" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="95.6" y1="156.0" x2="95.6" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="106.4" y1="156.0" x2="106.4" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="117.2" y1="156.0" x2="117.2" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="128.0" y1="156.0" x2="128.0" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="128.0" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">1cm</text><line x1="138.8" y1="156.0" x2="138.8" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="149.6" y1="156.0" x2="149.6" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="160.4" y1="156.0" x2="160.4" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="171.2" y1="156.0" x2="171.2" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="182.0" y1="156.0" x2="182.0" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="182.0" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">2cm</text><line x1="192.8" y1="156.0" x2="192.8" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="203.6" y1="156.0" x2="203.6" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="214.4" y1="156.0" x2="214.4" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="225.2" y1="156.0" x2="225.2" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="236.0" y1="156.0" x2="236.0" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="236.0" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">3cm</text><line x1="246.8" y1="156.0" x2="246.8" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="257.6" y1="156.0" x2="257.6" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="268.4" y1="156.0" x2="268.4" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/>
+
+  <!-- Etiqueta de dimensiones -->
+  <text x="308" y="194" text-anchor="end" fill="#7ee787" font-size="9.5" font-weight="600" font-family="Consolas, monospace">Dim: 15x20 / 50x50 mm (escala c/ regla mm)</text>
+</svg>

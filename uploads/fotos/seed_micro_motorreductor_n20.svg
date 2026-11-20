@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <rect width="320" height="200" fill="#16181c"/>
+  <defs>
+    <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#242830" stroke-width="0.6"/>
+    </pattern>
+  </defs>
+  <rect width="320" height="200" fill="url(#grid)"/>
+
+  <!-- Encabezado técnico -->
+  <text x="12" y="18" fill="#e6edf3" font-size="10.5" font-weight="600" font-family="Segoe UI, sans-serif">Micro-motorreductor N20</text>
+  <rect x="242" y="7" width="68" height="16" rx="3" fill="#262b33" stroke="#58a6ff" stroke-width="0.8"/>
+  <text x="276" y="18" text-anchor="middle" fill="#79c0ff" font-size="8.5" font-weight="600" font-family="Segoe UI, sans-serif">Escala 1</text>
+
+  <!-- Líneas guía de cota -->
+  <line x1="74.0" y1="140.0" x2="74.0" y2="156.0" stroke="#58a6ff" stroke-width="0.7" stroke-dasharray="2,2"/>
+  <line x1="274.0" y1="140.0" x2="274.0" y2="156.0" stroke="#58a6ff" stroke-width="0.7" stroke-dasharray="2,2"/>
+
+  <!-- Componente escalado -->
+  <rect x="74.0" y="38.0" width="200.0" height="100.0" rx="3" fill="#2b313a" stroke="#ffa657" stroke-width="1.5"/><rect x="274.0" y="80.0" width="12" height="16.0" rx="1" fill="#d0d7de"/><circle cx="174.0" cy="88.0" r="24.0" fill="none" stroke="#8b949e" stroke-width="1.2"/>
+
+  <!-- Regla vertical (mm) -->
+  <line x1="40.0" y1="26" x2="40.0" y2="138.0" stroke="#d0d0d0" stroke-width="1.2"/>
+  <line x1="32.0" y1="138.0" x2="40.0" y2="138.0" stroke="#d0d0d0" stroke-width="1.1"/><line x1="36.0" y1="129.7" x2="40.0" y2="129.7" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="121.3" x2="40.0" y2="121.3" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="113.0" x2="40.0" y2="113.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="104.7" x2="40.0" y2="104.7" stroke="#d0d0d0" stroke-width="0.7"/><line x1="32.0" y1="96.3" x2="40.0" y2="96.3" stroke="#d0d0d0" stroke-width="1.1"/><text x="29.0" y="99.3" text-anchor="end" fill="#a8b3c2" font-size="8" font-family="Consolas, monospace">5</text><line x1="36.0" y1="88.0" x2="40.0" y2="88.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="79.7" x2="40.0" y2="79.7" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="71.3" x2="40.0" y2="71.3" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="63.0" x2="40.0" y2="63.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="32.0" y1="54.7" x2="40.0" y2="54.7" stroke="#d0d0d0" stroke-width="1.1"/><text x="29.0" y="57.7" text-anchor="end" fill="#a8b3c2" font-size="8" font-family="Consolas, monospace">10</text><line x1="36.0" y1="46.3" x2="40.0" y2="46.3" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="38.0" x2="40.0" y2="38.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="29.7" x2="40.0" y2="29.7" stroke="#d0d0d0" stroke-width="0.7"/>
+
+  <!-- Regla horizontal (mm / cm) -->
+  <rect x="70.0" y="156.0" width="234.0" height="28" fill="#1e2229" opacity="0.9"/>
+  <line x1="74.0" y1="156.0" x2="304" y2="156.0" stroke="#d0d0d0" stroke-width="1.2"/>
+  <line x1="74.0" y1="156.0" x2="74.0" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="74.0" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">0</text><line x1="82.3" y1="156.0" x2="82.3" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="90.7" y1="156.0" x2="90.7" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="99.0" y1="156.0" x2="99.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="107.3" y1="156.0" x2="107.3" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="115.7" y1="156.0" x2="115.7" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="115.7" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">5</text><line x1="124.0" y1="156.0" x2="124.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="132.3" y1="156.0" x2="132.3" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="140.7" y1="156.0" x2="140.7" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="149.0" y1="156.0" x2="149.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="157.3" y1="156.0" x2="157.3" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="157.3" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">1cm</text><line x1="165.7" y1="156.0" x2="165.7" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="174.0" y1="156.0" x2="174.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="182.3" y1="156.0" x2="182.3" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="190.7" y1="156.0" x2="190.7" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="199.0" y1="156.0" x2="199.0" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="199.0" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">15</text><line x1="207.3" y1="156.0" x2="207.3" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="215.7" y1="156.0" x2="215.7" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="224.0" y1="156.0" x2="224.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="232.3" y1="156.0" x2="232.3" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="240.7" y1="156.0" x2="240.7" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="240.7" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">2cm</text><line x1="249.0" y1="156.0" x2="249.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="257.3" y1="156.0" x2="257.3" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="265.7" y1="156.0" x2="265.7" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="274.0" y1="156.0" x2="274.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/>
+
+  <!-- Etiqueta de dimensiones -->
+  <text x="308" y="194" text-anchor="end" fill="#7ee787" font-size="9.5" font-weight="600" font-family="Consolas, monospace">Dim: 24 x 12 x 10 mm (escala c/ regla mm)</text>
+</svg>

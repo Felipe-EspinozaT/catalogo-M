@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <rect width="320" height="200" fill="#16181c"/>
+  <defs>
+    <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#242830" stroke-width="0.6"/>
+    </pattern>
+  </defs>
+  <rect width="320" height="200" fill="url(#grid)"/>
+
+  <!-- Encabezado técnico -->
+  <text x="12" y="18" fill="#e6edf3" font-size="10.5" font-weight="600" font-family="Segoe UI, sans-serif">DRV8833 / MX1508</text>
+  <rect x="242" y="7" width="68" height="16" rx="3" fill="#262b33" stroke="#58a6ff" stroke-width="0.8"/>
+  <text x="276" y="18" text-anchor="middle" fill="#79c0ff" font-size="8.5" font-weight="600" font-family="Segoe UI, sans-serif">Escala 1</text>
+
+  <!-- Líneas guía de cota -->
+  <line x1="74.0" y1="144.0" x2="74.0" y2="156.0" stroke="#58a6ff" stroke-width="0.7" stroke-dasharray="2,2"/>
+  <line x1="166.6" y1="144.0" x2="166.6" y2="156.0" stroke="#58a6ff" stroke-width="0.7" stroke-dasharray="2,2"/>
+
+  <!-- Componente escalado -->
+  <rect x="74.0" y="34.0" width="92.6" height="108.0" rx="3" fill="#1c2d24" stroke="#3fb950" stroke-width="1.5"/><rect x="100.8" y="68.6" width="38.9" height="38.9" rx="1.5" fill="#161b22" stroke="#8b949e" stroke-width="1"/><circle cx="79.0" cy="39.0" r="1.8" fill="#e5c07b"/><circle cx="161.6" cy="39.0" r="1.8" fill="#e5c07b"/><circle cx="79.0" cy="137.0" r="1.8" fill="#e5c07b"/><circle cx="161.6" cy="137.0" r="1.8" fill="#e5c07b"/>
+
+  <!-- Regla vertical (mm) -->
+  <line x1="40.0" y1="26" x2="40.0" y2="142.0" stroke="#d0d0d0" stroke-width="1.2"/>
+  <line x1="32.0" y1="142.0" x2="40.0" y2="142.0" stroke="#d0d0d0" stroke-width="1.1"/><line x1="36.0" y1="131.7" x2="40.0" y2="131.7" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="121.4" x2="40.0" y2="121.4" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="111.1" x2="40.0" y2="111.1" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="100.9" x2="40.0" y2="100.9" stroke="#d0d0d0" stroke-width="0.7"/><line x1="32.0" y1="90.6" x2="40.0" y2="90.6" stroke="#d0d0d0" stroke-width="1.1"/><text x="29.0" y="93.6" text-anchor="end" fill="#a8b3c2" font-size="8" font-family="Consolas, monospace">10</text><line x1="36.0" y1="80.3" x2="40.0" y2="80.3" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="70.0" x2="40.0" y2="70.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="59.7" x2="40.0" y2="59.7" stroke="#d0d0d0" stroke-width="0.7"/><line x1="36.0" y1="49.4" x2="40.0" y2="49.4" stroke="#d0d0d0" stroke-width="0.7"/><line x1="32.0" y1="39.1" x2="40.0" y2="39.1" stroke="#d0d0d0" stroke-width="1.1"/><text x="29.0" y="42.1" text-anchor="end" fill="#a8b3c2" font-size="8" font-family="Consolas, monospace">20</text><line x1="36.0" y1="28.9" x2="40.0" y2="28.9" stroke="#d0d0d0" stroke-width="0.7"/>
+
+  <!-- Regla horizontal (mm / cm) -->
+  <rect x="70.0" y="156.0" width="234.0" height="28" fill="#1e2229" opacity="0.9"/>
+  <line x1="74.0" y1="156.0" x2="304" y2="156.0" stroke="#d0d0d0" stroke-width="1.2"/>
+  <line x1="74.0" y1="156.0" x2="74.0" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="74.0" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">0</text><line x1="84.3" y1="156.0" x2="84.3" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="94.6" y1="156.0" x2="94.6" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="104.9" y1="156.0" x2="104.9" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="115.1" y1="156.0" x2="115.1" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="125.4" y1="156.0" x2="125.4" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="125.4" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">1cm</text><line x1="135.7" y1="156.0" x2="135.7" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="146.0" y1="156.0" x2="146.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="156.3" y1="156.0" x2="156.3" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="166.6" y1="156.0" x2="166.6" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="176.9" y1="156.0" x2="176.9" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="176.9" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">2cm</text><line x1="187.1" y1="156.0" x2="187.1" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="197.4" y1="156.0" x2="197.4" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="207.7" y1="156.0" x2="207.7" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="218.0" y1="156.0" x2="218.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="228.3" y1="156.0" x2="228.3" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="228.3" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">3cm</text><line x1="238.6" y1="156.0" x2="238.6" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="248.9" y1="156.0" x2="248.9" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="259.1" y1="156.0" x2="259.1" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="269.4" y1="156.0" x2="269.4" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/>
+
+  <!-- Etiqueta de dimensiones -->
+  <text x="308" y="194" text-anchor="end" fill="#7ee787" font-size="9.5" font-weight="600" font-family="Consolas, monospace">Dim: 18 x 21 mm (escala c/ regla mm)</text>
+</svg>

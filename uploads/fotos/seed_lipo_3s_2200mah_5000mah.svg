@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <rect width="320" height="200" fill="#16181c"/>
+  <defs>
+    <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#242830" stroke-width="0.6"/>
+    </pattern>
+  </defs>
+  <rect width="320" height="200" fill="url(#grid)"/>
+
+  <!-- Encabezado técnico -->
+  <text x="12" y="18" fill="#e6edf3" font-size="10.5" font-weight="600" font-family="Segoe UI, sans-serif">LiPo 3S 2200mAh - 5000mAh</text>
+  <rect x="242" y="7" width="68" height="16" rx="3" fill="#262b33" stroke="#58a6ff" stroke-width="0.8"/>
+  <text x="276" y="18" text-anchor="middle" fill="#79c0ff" font-size="8.5" font-weight="600" font-family="Segoe UI, sans-serif">Escala 3</text>
+
+  <!-- Líneas guía de cota -->
+  <line x1="74.0" y1="123.3" x2="74.0" y2="156.0" stroke="#58a6ff" stroke-width="0.7" stroke-dasharray="2,2"/>
+  <line x1="274.0" y1="123.3" x2="274.0" y2="156.0" stroke="#58a6ff" stroke-width="0.7" stroke-dasharray="2,2"/>
+
+  <!-- Componente escalado -->
+  <rect x="74.0" y="54.7" width="200.0" height="66.7" rx="6.0" fill="#2b4c7e" stroke="#79c0ff" stroke-width="1.5"/><rect x="274.0" y="73.3" width="4" height="29.3" rx="1" fill="#d0d7de"/><text x="174.0" y="91.0" text-anchor="middle" fill="#e6edf3" font-size="9" font-family="sans-serif">+</text>
+
+  <!-- Regla vertical (mm) -->
+  <line x1="40.0" y1="26" x2="40.0" y2="121.3" stroke="#d0d0d0" stroke-width="1.2"/>
+  <line x1="32.0" y1="121.3" x2="40.0" y2="121.3" stroke="#d0d0d0" stroke-width="1.1"/><line x1="36.0" y1="111.8" x2="40.0" y2="111.8" stroke="#d0d0d0" stroke-width="0.7"/><line x1="32.0" y1="102.3" x2="40.0" y2="102.3" stroke="#d0d0d0" stroke-width="1.1"/><text x="29.0" y="105.3" text-anchor="end" fill="#a8b3c2" font-size="8" font-family="Consolas, monospace">10</text><line x1="36.0" y1="92.8" x2="40.0" y2="92.8" stroke="#d0d0d0" stroke-width="0.7"/><line x1="32.0" y1="83.2" x2="40.0" y2="83.2" stroke="#d0d0d0" stroke-width="1.1"/><text x="29.0" y="86.2" text-anchor="end" fill="#a8b3c2" font-size="8" font-family="Consolas, monospace">20</text><line x1="36.0" y1="73.7" x2="40.0" y2="73.7" stroke="#d0d0d0" stroke-width="0.7"/><line x1="32.0" y1="64.2" x2="40.0" y2="64.2" stroke="#d0d0d0" stroke-width="1.1"/><text x="29.0" y="67.2" text-anchor="end" fill="#a8b3c2" font-size="8" font-family="Consolas, monospace">30</text><line x1="36.0" y1="54.7" x2="40.0" y2="54.7" stroke="#d0d0d0" stroke-width="0.7"/><line x1="32.0" y1="45.1" x2="40.0" y2="45.1" stroke="#d0d0d0" stroke-width="1.1"/><text x="29.0" y="48.1" text-anchor="end" fill="#a8b3c2" font-size="8" font-family="Consolas, monospace">40</text>
+
+  <!-- Regla horizontal (mm / cm) -->
+  <rect x="70.0" y="156.0" width="234.0" height="28" fill="#1e2229" opacity="0.9"/>
+  <line x1="74.0" y1="156.0" x2="304" y2="156.0" stroke="#d0d0d0" stroke-width="1.2"/>
+  <line x1="74.0" y1="156.0" x2="74.0" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="74.0" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">0</text><line x1="83.5" y1="156.0" x2="83.5" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="93.0" y1="156.0" x2="93.0" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="93.0" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">1cm</text><line x1="102.6" y1="156.0" x2="102.6" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="112.1" y1="156.0" x2="112.1" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="112.1" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">2cm</text><line x1="121.6" y1="156.0" x2="121.6" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="131.1" y1="156.0" x2="131.1" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="131.1" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">3cm</text><line x1="140.7" y1="156.0" x2="140.7" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="150.2" y1="156.0" x2="150.2" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="150.2" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">4cm</text><line x1="159.7" y1="156.0" x2="159.7" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="169.2" y1="156.0" x2="169.2" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="169.2" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">5cm</text><line x1="178.8" y1="156.0" x2="178.8" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="188.3" y1="156.0" x2="188.3" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="188.3" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">6cm</text><line x1="197.8" y1="156.0" x2="197.8" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="207.3" y1="156.0" x2="207.3" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="207.3" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">7cm</text><line x1="216.9" y1="156.0" x2="216.9" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="226.4" y1="156.0" x2="226.4" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="226.4" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">8cm</text><line x1="235.9" y1="156.0" x2="235.9" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="245.4" y1="156.0" x2="245.4" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="245.4" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">9cm</text><line x1="255.0" y1="156.0" x2="255.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/><line x1="264.5" y1="156.0" x2="264.5" y2="166.0" stroke="#d0d0d0" stroke-width="1.2"/><text x="264.5" y="177.0" text-anchor="middle" fill="#a8b3c2" font-size="8.5" font-family="Consolas, monospace">10cm</text><line x1="274.0" y1="156.0" x2="274.0" y2="161.0" stroke="#d0d0d0" stroke-width="0.7"/>
+
+  <!-- Etiqueta de dimensiones -->
+  <text x="308" y="194" text-anchor="end" fill="#7ee787" font-size="9.5" font-weight="600" font-family="Consolas, monospace">Dim: 105 x 35 x 25 mm (escala c/ regla mm)</text>
+</svg>

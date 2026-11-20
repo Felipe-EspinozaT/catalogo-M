@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo Mecatrónico</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "/static/vendor/three.module.min.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Barra superior fija -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <h1>Catálogo Mecatrónico</h1>
+      </div>
+
+      <div class="view-toggle" role="group" aria-label="Selector de distribución">
+        <button id="btnViewComponente" class="toggle-btn active" data-view="componente">
+          Vista por Componente
+        </button>
+        <button id="btnViewEscala" class="toggle-btn" data-view="escala">
+          Vista por Escala
+        </button>
+      </div>
+    </div>
+
+    <div class="topbar-center">
+      <div class="search-wrap">
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Buscar modelo, dimensiones, specs o tienda..."
+          autocomplete="off"
+        />
+      </div>
+      <select id="quickFilter" aria-label="Filtro rápido">
+        <option value="">Todas las escalas / categorías</option>
+      </select>
+    </div>
+
+    <div class="topbar-right">
+      <button id="btnMaqueta3D" class="btn-secondary" title="Abrir Maqueta 3D (escala mm)">🧊 Maqueta 3D</button>
+      <button id="btnEnergyCalc" class="btn-secondary" title="Calcular autonomía de batería, drivers y consumo">⚡ Energía</button>
+      <button id="btnNewModel" class="btn-primary">+ Nuevo Modelo</button>
+      <button id="btnNewColumn" class="btn-secondary">+ Nueva Columna</button>
+    </div>
+  </header>
+
+  <!-- Contenedor principal de bloques y tablas -->
+  <main id="catalogContainer" class="catalog-container">
+    <div class="loading-state">Cargando catálogo...</div>
+  </main>
+
+  <!-- Barra inferior flotante del Armador Rápido de BOM -->
+  <aside id="bomBar" class="bom-bar hidden" aria-live="polite">
+    <div class="bom-info">
+      <span class="bom-badge" id="bomCount">0 modelos</span>
+      <span class="bom-total" id="bomTotal">Total Est.: S/ 0.00</span>
+    </div>
+    <div class="bom-actions">
+      <button id="btnCopyBom" class="btn-secondary btn-sm">Copiar lista BOM</button>
+      <button id="btnClearBom" class="btn-ghost btn-sm">Limpiar selección</button>
+    </div>
+  </aside>
+
+  <!-- Modal: Nuevo Modelo -->
+  <div id="modalNewModel" class="modal-backdrop hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Nuevo Modelo de Componente</h2>
+        <button class="modal-close" data-close="modalNewModel">&times;</button>
+      </div>
+      <form id="formNewModel" class="modal-body">
+        <div class="form-grid">
+          <label>
+            Modelo *
+            <input type="text" name="modelo" required placeholder="Ej: ESP32-C3 SuperMini" />
+          </label>
+          <label>
+            Categoría *
+            <input type="text" name="categoria" list="categoriasList" required placeholder="Ej: ESP32" />
+            <datalist id="categoriasList"></datalist>
+          </label>
+          <label>
+            Escala *
+            <select name="escala" required>
+              <option value="Escala 1">Escala 1: Micro / Cucaracha (&lt; 5x5 cm)</option>
+              <option value="Escala 2" selected>Escala 2: Pequeña / Escritorio (10-25 cm)</option>
+              <option value="Escala 3">Escala 3: Mediana / Rover-CNC (30-70 cm)</option>
+              <option value="Escala 4">Escala 4: Grande / Humana-Vehículo (&gt; 1 m)</option>
+            </select>
+          </label>
+          <label>
+            Dimensiones
+            <input type="text" name="dimensiones" placeholder="Ej: 45 x 20 x 15 mm" />
+          </label>
+          <label>
+            Voltaje
+            <input type="text" name="voltaje" placeholder="Ej: 3.3V lógica (5V VIN)" />
+          </label>
+          <label>
+            Especificaciones (incl. I máx)
+            <input type="text" name="especificaciones" placeholder="Ej: I2C, Dual-Core, I máx: 500mA" />
+          </label>
+          <label>
+            Precio Est. (S/)
+            <input type="text" name="precio_est" placeholder="Ej: S/ 20 - 30" />
+          </label>
+          <label>
+            Dónde encontrarlo
+            <input type="text" name="donde_encontrar" placeholder="Ej: Paruro / Naylamp" />
+          </label>
+          <label class="full-width">
+            Usos y consideraciones
+            <textarea name="usos" rows="3" placeholder="USOS: ...&#10;CONSIDERAR: ..."></textarea>
+          </label>
+          <label class="full-width">
+            Link / Notas
+            <input type="text" name="link_notas" placeholder="https://... o nota técnica" />
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-ghost" data-close="modalNewModel">Cancelar</button>
+          <button type="submit" class="btn-primary">Guardar Modelo</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Nueva Columna / Atributo -->
+  <div id="modalNewColumn" class="modal-backdrop hidden">
+    <div class="modal-card modal-sm">
+      <div class="modal-header">
+        <h2>Nueva Columna / Atributo</h2>
+        <button class="modal-close" data-close="modalNewColumn">&times;</button>
+      </div>
+      <form id="formNewColumn" class="modal-body">
+        <label>
+          Nombre del atributo *
+          <input type="text" name="label" required placeholder="Ej: Peso (g), Corriente máx., Pinout" />
+        </label>
+        <div class="modal-footer">
+          <button type="button" class="btn-ghost" data-close="modalNewColumn">Cancelar</button>
+          <button type="submit" class="btn-primary">Agregar Columna</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Zoom de Foto Ref. -->
+  <div id="modalImageZoom" class="modal-backdrop hidden">
+    <div class="modal-card modal-zoom">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+          <h2 id="zoomTitle">Vista previa</h2>
+          <div id="zoomToggleGroup" class="view-toggle">
+            <button type="button" id="btnZoomPhoto" class="toggle-btn active">Foto</button>
+            <button type="button" id="btnZoomRuler" class="toggle-btn">Vista Dimensionada (mm)</button>
+          </div>
+        </div>
+        <button class="modal-close" data-close="modalImageZoom">&times;</button>
+      </div>
+      <div class="modal-body zoom-body">
+        <img id="zoomImg" src="" alt="Foto de referencia" />
+      </div>
+      <div class="modal-footer">
+        <button id="btnZoomReplace" class="btn-secondary">Cambiar foto</button>
+        <button id="btnZoomDelete" class="btn-danger">Quitar foto</button>
+        <button class="btn-ghost" data-close="modalImageZoom">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Usos y Consideraciones -->
+  <div id="modalUsos" class="modal-backdrop hidden">
+    <div class="modal-card modal-usos">
+      <div class="modal-header">
+        <div>
+          <h2 id="usosTitle">Usos y Consideraciones</h2>
+          <span id="usosSubtitle" class="modal-subtitle"></span>
+        </div>
+        <button class="modal-close" data-close="modalUsos">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="usosPreview" class="usos-preview"></div>
+        <label class="usos-edit-label">
+          Editar usos y cosas a considerar:
+          <textarea id="usosTextarea" rows="7" placeholder="USOS: ...&#10;CONSIDERAR: ..."></textarea>
+        </label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-ghost" data-close="modalUsos">Cerrar</button>
+        <button type="button" id="btnSaveUsos" class="btn-primary">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Calculadora Energética (Batería + Drivers + Autonomía) -->
+  <div id="modalEnergy" class="modal-backdrop hidden">
+    <div class="modal-card modal-energy">
+      <div class="modal-header">
+        <div>
+          <h2>⚡ Cálculos Energéticos</h2>
+          <span class="modal-subtitle">Autonomía esperada y validación de picos</span>
+        </div>
+        <button class="modal-close" data-close="modalEnergy">&times;</button>
+      </div>
+      <div class="modal-body energy-body">
+        <section class="energy-section">
+          <h3>1. Fuente</h3>
+          <div class="energy-grid">
+            <label>
+              Preset rápido del catálogo
+              <select id="energyBatteryPreset">
+                <option value="">Personalizado...</option>
+                <option value="3.7,350,1.5,80">LiPo 1S 350mAh (3.7V, ~1.5C)</option>
+                <option value="7.4,1200,20,80">LiPo 2S 1200mAh (7.4V, 20C)</option>
+                <option value="7.4,2500,4,80">2x 18650 en serie 2500mAh (7.4V, 4C)</option>
+                <option value="11.1,3000,30,80">LiPo 3S 3000mAh (11.1V, 30C)</option>
+                <option value="12.8,20000,1,90">LiFePO4 12V 20Ah (12.8V, 1C)</option>
+              </select>
+            </label>
+            <label>
+              Voltaje Nominal (V)
+              <input type="number" id="energyBattV" value="7.4" step="0.1" min="1" />
+            </label>
+            <label>
+              Capacidad (mAh)
+              <input type="number" id="energyBattMah" value="2500" step="50" min="50" />
+            </label>
+            <label>
+              Descarga Máx. (C-rate)
+              <input type="number" id="energyBattC" value="10" step="0.5" min="0.5" />
+            </label>
+            <label>
+              Factor usable / eficiencia (%)
+              <input type="number" id="energyEfficiency" value="80" step="5" min="30" max="100" title="80% típico para no sobredescargar LiPo y contar pérdidas de reguladores" />
+            </label>
+          </div>
+        </section>
+
+        <section class="energy-section">
+          <div class="energy-section-head">
+            <h3>2. Componentes</h3>
+            <div class="energy-add-controls">
+              <select id="energyLoadPreset">
+                <option value="">+ Agregar carga típica...</option>
+                <option value="ESP32 (WiFi activo),1,180,500">ESP32 (WiFi activo) — 180mA prom / 500mA pico</option>
+                <option value="Motorreductor N20,2,250,1200">Micro-motor N20 (x2) — 250mA prom / 1200mA stall</option>
+                <option value="Motorreductor TT,2,300,1200">Motor TT amarillo (x2) — 300mA prom / 1200mA stall</option>
+                <option value="Motor 25GA/37GB 12V,2,700,4000">Motor metálico 25GA/37GB — 700mA prom / 4000mA stall</option>
+                <option value="Servo SG90 / MG90S,2,180,750">Servo SG90/MG90S — 180mA prom / 750mA stall</option>
+                <option value="Servo MG996R,2,500,2500">Servo MG996R — 500mA prom / 2500mA stall</option>
+                <option value="NEMA 17 (por motor),2,1200,1800">NEMA 17 — 1200mA prom / 1800mA pico</option>
+                <option value="RPLIDAR A1 / Sensores,1,450,650">RPLIDAR A1 — 450mA prom / 650mA pico</option>
+              </select>
+              <button type="button" id="btnAddEnergyRow" class="btn-secondary btn-sm">+ Agregar (Catálogo / Manual)</button>
+            </div>
+          </div>
+
+          <datalist id="energyDriversList"></datalist>
+
+          <div class="table-scroll">
+            <table class="catalog-table energy-table">
+              <thead>
+                <tr>
+                  <th>Componente / Carga</th>
+                  <th>Cant.</th>
+                  <th>I promedio (mA c/u)</th>
+                  <th>I máx / pico (mA c/u)</th>
+                  <th>Driver / Regulador sug.</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="energyLoadsBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="energy-results" id="energyResults"></section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-ghost" data-close="modalEnergy">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sub-Modal: Agregar Carga (Catálogo o Manual) -->
+  <div id="modalAddEnergyLoad" class="modal-backdrop hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Agregar Carga a la Calculadora</h2>
+        <button class="modal-close" data-close="modalAddEnergyLoad">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="view-toggle" style="margin-bottom: 14px;">
+          <button type="button" id="btnLoadModeCatalog" class="toggle-btn active">Del Catálogo</button>
+          <button type="button" id="btnLoadModeManual" class="toggle-btn">Escrito Manual</button>
+        </div>
+
+        <form id="formAddEnergyLoad">
+          <div id="loadCatalogPickers" class="form-grid" style="margin-bottom: 12px;">
+            <label>
+              Tipo / Categoría
+              <select id="loadCatSelect"></select>
+            </label>
+            <label>
+              Componente del catálogo
+              <select id="loadCompSelect"></select>
+            </label>
+          </div>
+
+          <div class="form-grid">
+            <label class="full-width">
+              Nombre de la carga *
+              <input type="text" id="loadNameInput" required placeholder="Ej: Motorreductor N20" />
+            </label>
+            <label>
+              Cantidad
+              <input type="number" id="loadQtyInput" value="1" min="1" step="1" required />
+            </label>
+            <label>
+              Driver / Regulador (opcional)
+              <input type="text" id="loadDriverInput" list="energyDriversList" placeholder="Escoge de la lista o escribe..." />
+            </label>
+            <label>
+              I promedio (mA c/u) *
+              <input type="number" id="loadAvgMaInput" value="150" min="0" step="10" required />
+            </label>
+            <label>
+              I máx / pico (mA c/u) *
+              <input type="number" id="loadPeakMaInput" value="500" min="0" step="50" required />
+            </label>
+          </div>
+
+          <div class="modal-footer" style="margin: 14px -16px -16px;">
+            <button type="button" class="btn-ghost" data-close="modalAddEnergyLoad">Cancelar</button>
+            <button type="submit" class="btn-primary">Agregar a la tabla</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vista Fullscreen: Maqueta 3D (Fases 1 y 2) -->
+  <section id="maqueta3DView" class="maqueta-view hidden" aria-label="Maqueta 3D">
+    <header class="m3d-topbar">
+      <div class="m3d-bar-group">
+        <button type="button" id="btnM3dClose" class="btn-secondary btn-sm">&larr; Catálogo</button>
+        <span class="m3d-title">🧊 Maqueta 3D · 1u = 1 mm</span>
+      </div>
+
+      <div class="m3d-bar-group">
+        <div class="view-toggle" role="group" aria-label="Modo de transformación">
+          <button type="button" id="btnM3dMove" class="toggle-btn active">Mover (G)</button>
+          <button type="button" id="btnM3dRotate" class="toggle-btn">Rotar (R)</button>
+          <button type="button" id="btnM3dWire" class="toggle-btn">🔌 Cable (C)</button>
+        </div>
+
+        <button type="button" id="btnM3dRotY" class="btn-secondary btn-sm" title="Rotar 90° en eje Y">&#8634; 90° Y</button>
+        <button type="button" id="btnM3dRotX" class="btn-secondary btn-sm" title="Rotar 90° en eje X">&#8635; 90° X</button>
+
+        <select id="m3dSnapSelect" class="m3d-select" aria-label="Snap a grilla">
+          <option value="0">Snap: Libre</option>
+          <option value="1">Snap: 1 mm</option>
+          <option value="5" selected>Snap: 5 mm</option>
+          <option value="10">Snap: 10 mm</option>
+        </select>
+
+        <div class="view-toggle" role="group" aria-label="Vistas de cámara">
+          <button type="button" id="btnM3dCamIso" class="toggle-btn">Isométrica</button>
+          <button type="button" id="btnM3dCamTop" class="toggle-btn">Superior</button>
+          <button type="button" id="btnM3dCamFront" class="toggle-btn">Frontal</button>
+        </div>
+
+        <button type="button" id="btnM3dHitbox" class="toggle-btn active" style="border:1px solid var(--border-ui); border-radius:5px;">Hitboxes</button>
+      </div>
+
+      <div class="m3d-bar-group">
+        <span id="m3dCollisionStatus" class="m3d-badge-ok">✓ Sin colisiones</span>
+        <button type="button" id="btnM3dClear" class="btn-danger btn-sm">Limpiar</button>
+      </div>
+    </header>
+
+    <!-- Barra contextual de cables (Fase 3) -->
+    <div id="m3dWireBar" class="m3d-wirebar hidden">
+      <span class="m3d-prop-label" style="margin:0;">Color cable:</span>
+      <div id="m3dWireColors" class="m3d-swatches"></div>
+      <label class="m3d-wire-field">
+        Arco (mm)
+        <input type="number" id="m3dWireArch" value="22" min="2" max="120" step="2" />
+      </label>
+      <label class="m3d-wire-field">
+        Grosor (mm)
+        <input type="number" id="m3dWireRadius" value="0.9" min="0.4" max="3.0" step="0.2" />
+      </label>
+      <span id="m3dWireHint" class="m3d-wire-hint">Clic en componente origen...</span>
+      <button type="button" id="btnM3dWireCancel" class="btn-ghost btn-sm" style="margin-left:auto;">Cancelar</button>
+    </div>
+
+    <div class="m3d-workspace">
+      <!-- Panel izquierdo: Catálogo, Estructuras y Archivo -->
+      <aside class="m3d-sidebar">
+        <div class="view-toggle m3d-tabs">
+          <button type="button" id="btnM3dTabCatalog" class="toggle-btn active">Catálogo</button>
+          <button type="button" id="btnM3dTabStruct" class="toggle-btn">Estructuras</button>
+          <button type="button" id="btnM3dTabFiles" class="toggle-btn">Archivo</button>
+        </div>
+
+        <div id="m3dPanelCatalog" class="m3d-panel">
+          <input type="search" id="m3dSearch" class="m3d-input" placeholder="Buscar componente..." autocomplete="off" />
+          <select id="m3dCatFilter" class="m3d-input" aria-label="Filtrar categoría 3D">
+            <option value="">Todas las categorías</option>
+          </select>
+          <div id="m3dCatalogList" class="m3d-catalog-list"></div>
+        </div>
+
+        <div id="m3dPanelStruct" class="m3d-panel hidden">
+          <div class="m3d-struct-card">
+            <h4>Plantillas rápidas</h4>
+            <div class="m3d-btn-col">
+              <button type="button" id="btnPresetCar2WD" class="btn-secondary btn-sm">🚗 Carro 2WD (150×100mm)</button>
+              <button type="button" id="btnPresetBug" class="btn-secondary btn-sm">🐞 Micro Cucaracha (45×45mm)</button>
+            </div>
+          </div>
+
+          <div class="m3d-struct-card">
+            <h4>Chasis / Placa (mm)</h4>
+            <div class="m3d-struct-grid">
+              <label>Ancho<input type="number" id="stChassisW" value="140" min="10" step="5" /></label>
+              <label>Largo<input type="number" id="stChassisD" value="90" min="10" step="5" /></label>
+              <label>Grosor<input type="number" id="stChassisH" value="4" min="1" step="1" /></label>
+              <label>Color<input type="color" id="stChassisColor" value="#d8dce3" /></label>
+            </div>
+            <button type="button" id="btnAddChassis" class="btn-primary btn-sm full-btn">+ Agregar Chasis</button>
+          </div>
+
+          <div class="m3d-struct-card">
+            <h4>Rueda (mm)</h4>
+            <div class="m3d-struct-grid">
+              <label>Diám. (Ø)<input type="number" id="stWheelDia" value="65" min="10" step="5" /></label>
+              <label>Ancho<input type="number" id="stWheelW" value="26" min="4" step="2" /></label>
+              <label>Color<input type="color" id="stWheelColor" value="#3a3f47" /></label>
+            </div>
+            <button type="button" id="btnAddWheel" class="btn-primary btn-sm full-btn">+ Agregar Rueda</button>
+          </div>
+
+          <div class="m3d-struct-card">
+            <h4>Poste / Separador (mm)</h4>
+            <div class="m3d-struct-grid">
+              <label>Diám. (Ø)<input type="number" id="stPostDia" value="6" min="2" step="1" /></label>
+              <label>Altura<input type="number" id="stPostH" value="25" min="4" step="2" /></label>
+            </div>
+            <button type="button" id="btnAddPost" class="btn-primary btn-sm full-btn">+ Agregar Poste</button>
+          </div>
+
+          <div class="m3d-struct-card">
+            <h4>Protoboard</h4>
+            <select id="stBreadboardSize" class="m3d-input" style="margin-bottom:8px;">
+              <option value="mini">Mini (45 × 35 × 9 mm)</option>
+              <option value="half">Media 400 pts (82 × 55 × 9 mm)</option>
+              <option value="full">Completa 830 pts (165 × 55 × 9 mm)</option>
+            </select>
+            <button type="button" id="btnAddBreadboard" class="btn-primary btn-sm full-btn">+ Agregar Protoboard</button>
+          </div>
+
+          <div class="m3d-struct-card">
+            <h4>Bloque genérico (mm)</h4>
+            <div class="m3d-struct-grid">
+              <label>X<input type="number" id="stBoxW" value="40" min="2" step="2" /></label>
+              <label>Z<input type="number" id="stBoxD" value="30" min="2" step="2" /></label>
+              <label>Y (Alto)<input type="number" id="stBoxH" value="20" min="2" step="2" /></label>
+              <label>Color<input type="color" id="stBoxColor" value="#c9cfd8" /></label>
+            </div>
+            <button type="button" id="btnAddBox" class="btn-primary btn-sm full-btn">+ Agregar Bloque</button>
+          </div>
+        </div>
+
+        <div id="m3dPanelFiles" class="m3d-panel hidden">
+          <div class="m3d-struct-card">
+            <h4>Proyectos en BD (SQLite)</h4>
+            <input type="text" id="m3dProjName" class="m3d-input" placeholder="Nombre de maqueta..." style="margin-bottom:6px;" />
+            <button type="button" id="btnM3dSaveDb" class="btn-primary btn-sm full-btn" style="margin-bottom:8px;">Guardar en BD</button>
+            <div id="m3dSavedList" class="m3d-saved-list"></div>
+          </div>
+
+          <div class="m3d-struct-card">
+            <h4>Importar Modelo 3D (.GLB / .STL)</h4>
+            <div class="m3d-struct-grid" style="grid-template-columns: 1fr;">
+              <label>Escala de importación<input type="number" id="m3dImportScale" value="1" step="0.1" min="0.01" /></label>
+            </div>
+            <button type="button" id="btnM3dUploadModel" class="btn-secondary btn-sm full-btn" style="margin-bottom:8px;">+ Subir .GLB / .STL</button>
+            <div id="m3dLibraryList" class="m3d-saved-list"></div>
+          </div>
+
+          <div class="m3d-struct-card">
+            <h4>Importar / Exportar</h4>
+            <div class="m3d-btn-col">
+              <button type="button" id="btnM3dExportJson" class="btn-secondary btn-sm">Exportar .JSON</button>
+              <button type="button" id="btnM3dImportJson" class="btn-secondary btn-sm">Importar .JSON</button>
+              <button type="button" id="btnM3dExportGlb" class="btn-secondary btn-sm">Exportar .GLB (Blender)</button>
+              <button type="button" id="btnM3dExportStl" class="btn-secondary btn-sm">Exportar .STL (3D Print)</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Lienzo 3D central -->
+      <div id="m3dCanvasWrap">
+        <div class="m3d-hud">
+          Clic: seleccionar · G/R: mover/rotar · C: cable · Supr: borrar · Clic der./rueda: orbitar
+        </div>
+      </div>
+
+      <!-- Panel derecho: Inspector y Objetos en escena -->
+      <aside class="m3d-inspector">
+        <div class="m3d-inspector-box">
+          <h3>Propiedades</h3>
+          <div id="m3dInspectorEmpty" class="m3d-empty-msg">
+            Selecciona un objeto para editar posición, rotación o color.
+          </div>
+          <div id="m3dInspectorProps" class="hidden">
+            <div id="m3dSelName" class="m3d-sel-name"></div>
+            <div id="m3dSelDims" class="m3d-sel-dims"></div>
+            <div id="m3dSelCollision" class="m3d-sel-collision hidden">⚠ Colisión detectada con otra pieza</div>
+
+            <div class="m3d-prop-group">
+              <span class="m3d-prop-label">Posición (mm)</span>
+              <div class="m3d-vec-grid">
+                <label>X<input type="number" id="m3dPosX" step="1" /></label>
+                <label>Y<input type="number" id="m3dPosY" step="1" /></label>
+                <label>Z<input type="number" id="m3dPosZ" step="1" /></label>
+              </div>
+            </div>
+
+            <div class="m3d-prop-group">
+              <span class="m3d-prop-label">Rotación (°)</span>
+              <div class="m3d-vec-grid">
+                <label>X<input type="number" id="m3dRotX" step="15" /></label>
+                <label>Y<input type="number" id="m3dRotY" step="15" /></label>
+                <label>Z<input type="number" id="m3dRotZ" step="15" /></label>
+              </div>
+            </div>
+
+            <div class="m3d-prop-group">
+              <span class="m3d-prop-label">Color mate</span>
+              <div id="m3dColorSwatches" class="m3d-swatches"></div>
+            </div>
+
+            <div class="m3d-prop-actions">
+              <button type="button" id="btnM3dDropFloor" class="btn-secondary btn-sm">Apoyar Y=0</button>
+              <button type="button" id="btnM3dDuplicate" class="btn-secondary btn-sm">Duplicar</button>
+              <button type="button" id="btnM3dDelete" class="btn-danger btn-sm">Eliminar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="m3d-scene-box">
+          <div class="m3d-scene-head">
+            <h3>Objetos en escena</h3>
+            <span id="m3dSceneCount" class="m3d-count-pill">0</span>
+          </div>
+          <div id="m3dSceneList" class="m3d-scene-list"></div>
+        </div>
+
+        <div class="m3d-wires-box">
+          <div class="m3d-scene-head">
+            <h3>Cables</h3>
+            <span id="m3dWireCount" class="m3d-count-pill">0</span>
+          </div>
+          <div id="m3dWireList" class="m3d-scene-list"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Inputs ocultos para subir archivos -->
+  <input type="file" id="hiddenFotoInput" accept=".png,.jpg,.jpeg,.webp,.svg" hidden />
+  <input type="file" id="hiddenPdfInput" accept=".pdf" hidden />
+  <input type="file" id="hiddenModel3dInput" accept=".glb,.gltf,.stl" hidden />
+  <input type="file" id="hiddenJsonInput" accept=".json" hidden />
+
+  <!-- Toast de feedback -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="/static/app.js"></script>
+  <script type="module" src="/static/maqueta3d.js"></script>
+</body>
+</html>
